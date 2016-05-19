@@ -1,0 +1,51 @@
+#!/bin/sh
+#ident  "@(#)makesrc     %I% 07/02/23"
+#
+#@(#)MAKER      # identifies script as a "maker" script (needed by Build.sh)
+#
+#@(#) Shell script to run makencic_pgm makefile
+#
+###############################################################################
+#
+
+  # Link program in directory variable.
+
+  E_PTH="../../e/"
+
+  # Master makefile.
+
+  MAKEFILE="makefile"
+
+  # Include directory where ncic.h found.
+
+  INCL=../../include
+
+  # Default program list.
+  ALL="libhiredisext.so libredisfgl.42x"
+
+  # Process variable passed to script.
+
+  if [ "$*" = "all" ]; then
+    LIST="$ALL"
+  else
+    LIST="$*"
+  fi
+
+  # Program build invocation.
+
+  for FILEN in ${LIST}; do
+    FILE=${E_PTH}`basename ${FILEN}`
+    case "`basename ${FILE}`" in
+      *.so )
+        FILE=${E_PTH}42m/`basename ${FILEN}`
+        ;;
+      *.42x )
+        FILE=${E_PTH}42m/`basename ${FILEN}`
+        ;;
+    esac
+
+    echo "make -f ${MAKEFILE} ${FILE}"
+    make -f ${MAKEFILE} "EXEC_DIR=${E_PTH}" ${FILE}
+  done
+#
+###############################################################################

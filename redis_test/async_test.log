@@ -1,0 +1,8 @@
+Date: 2016/05/04    Time: 12:07:16
+ERROR: Unable to connect to Redis at 127.0.0.1:1234 = Connection refused
+Date: 2016/05/04    Time: 12:07:17
+ERROR: Unable to connect to Redis at 127.0.0.1:6381 = ERR invalid password
+Date: 2016/05/04    Time: 12:07:18
+Async Redis connection established at 127.0.0.1:6381.
+Date: 2016/05/04    Time: 12:07:20
+Disconnected from Async Redis connection.
